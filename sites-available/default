@@ -331,7 +331,6 @@ authorize {
 	#
 	#  The chap module will set 'Auth-Type := CHAP' if we are
 	#  handling a CHAP request and Auth-Type has not already been set
-	chap
 
 	#
 	#  If the users are logging in with an MS-CHAP-Challenge
@@ -345,7 +344,6 @@ authorize {
 	#  If you have a Cisco SIP server authenticating against
 	#  FreeRADIUS, uncomment the following line, and the 'digest'
 	#  line in the 'authenticate' section.
-	digest
 
 	#
 	#  The WiMAX specification says that the Calling-Station-Id
@@ -468,7 +466,6 @@ authorize {
 	#  This module should be listed last, so that the other modules
 	#  get a chance to set Auth-Type for themselves.
 	#
-	pap
 
 	#
 	#  If "status_server = yes", then Status-Server messages are passed
@@ -530,35 +527,23 @@ authenticate {
 	#  PAP authentication, when a back-end database listed
 	#  in the 'authorize' section supplies a password.  The
 	#  password can be clear-text, or encrypted.
-	Auth-Type PAP {
-		pap
-	}
 
 	#
 	#  Most people want CHAP authentication
 	#  A back-end database listed in the 'authorize' section
 	#  MUST supply a CLEAR TEXT password.  Encrypted passwords
 	#  won't work.
-	Auth-Type CHAP {
-		chap
-	}
-
 	#
 	#  MSCHAP authentication.
-	Auth-Type MS-CHAP {
-		mschap
-	}
 
 	#
 	#  For old names, too.
 	#
-	mschap
 
 	#
 	#  If you have a Cisco SIP server authenticating against
 	#  FreeRADIUS, uncomment the following line, and the 'digest'
 	#  line in the 'authorize' section.
-	digest
 
 	#
 	#  Pluggable Authentication Modules.

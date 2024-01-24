@@ -69,7 +69,7 @@ dh:
 ca.key ca.pem: ca.cnf
 	@[ -f index.txt ] || $(MAKE) index.txt
 	@[ -f serial ] || $(MAKE) serial
-	$(OPENSSL) req -new -x509 -keyout ca.key -out ca.pem \
+	$(OPENSSL) req -new -newkey ec:<(openssl ecparam -name secp384r1) -x509 -keyout ca.key -out ca.pem \
 		-days $(CA_DEFAULT_DAYS) -config ./ca.cnf \
 		-passin pass:$(PASSWORD_CA) -passout pass:$(PASSWORD_CA)
 	chmod g+r ca.key
@@ -88,7 +88,7 @@ ca.crl: ca.pem
 #
 ######################################################################
 server.csr server.key: server.cnf
-	$(OPENSSL) req -new  -out server.csr -keyout server.key -config ./server.cnf
+	$(OPENSSL) req -new -newkey ec:<(openssl ecparam -name secp384r1)  -out server.csr -keyout server.key -config ./server.cnf
 	chmod g+r server.key
 
 server.crt: ca.key ca.pem server.csr
@@ -113,7 +113,7 @@ server.vrfy: ca.pem
 #
 ######################################################################
 client.csr client.key: client.cnf
-	$(OPENSSL) req -new  -out client.csr -keyout client.key -config ./client.cnf
+	$(OPENSSL) req -new -newkey ec:<(openssl ecparam -name secp384r1)  -out client.csr -keyout client.key -config ./client.cnf
 	chmod g+r client.key
 
 client.crt: ca.key ca.pem client.csr
@@ -140,7 +140,7 @@ client.vrfy: ca.pem client.pem
 #
 ######################################################################
 inner-server.csr inner-server.key: inner-server.cnf
-	$(OPENSSL) req -new  -out inner-server.csr -keyout inner-server.key -config ./inner-server.cnf
+	$(OPENSSL) req -new -newkey ec:<(openssl ecparam -name secp384r1)  -out inner-server.csr -keyout inner-server.key -config ./inner-server.cnf
 	chmod g+r inner-server.key
 
 inner-server.crt: ca.key ca.pem inner-server.csr

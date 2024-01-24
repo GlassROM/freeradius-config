@@ -41,12 +41,12 @@ if [ ! -f dh ]; then
 fi
 
 if [ ! -f server.key ]; then
-  openssl req -new  -out server.csr -keyout server.key -config ./server.cnf || exit 1
+  openssl req -new -newkey ec:<(openssl ecparam -name secp384r1)  -out server.csr -keyout server.key -config ./server.cnf || exit 1
   chmod g+r server.key
 fi
 
 if [ ! -f ca.key ]; then
-  openssl req -new -x509 -keyout ca.key -out ca.pem -days `grep default_days ca.cnf | sed 's/.*=//;s/^ *//'` -config ./ca.cnf || exit 1
+  openssl req -new -newkey ec:<(openssl ecparam -name secp384r1) -x509 -keyout ca.key -out ca.pem -days `grep default_days ca.cnf | sed 's/.*=//;s/^ *//'` -config ./ca.cnf || exit 1
 fi
 
 if [ ! -f index.txt ]; then
@@ -77,7 +77,7 @@ if [ ! -f ca.der ]; then
 fi
 
 if [ ! -f client.key ]; then
-  openssl req -new  -out client.csr -keyout client.key -config ./client.cnf
+  openssl req -new -newkey ec:<(openssl ecparam -name secp384r1)  -out client.csr -keyout client.key -config ./client.cnf
   chmod g+r client.key
 fi
 

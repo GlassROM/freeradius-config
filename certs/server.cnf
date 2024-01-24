@@ -41,18 +41,18 @@ emailAddress		= optional
 [ req ]
 prompt			= no
 distinguished_name	= server
-default_bits		= 2048
+default_bits		= 8192
 input_password		= whatever
 output_password		= whatever
 #req_extensions		= v3_req
 
 [server]
-countryName		= FR
-stateOrProvinceName	= Radius
-localityName		= Somewhere
-organizationName	= Example Inc.
-emailAddress		= admin@example.org
-commonName		= "Example Server Certificate"
+countryName		= IN
+stateOrProvinceName	= Maharashtra
+localityName		= Mumbai
+organizationName	= AAK MARKETSPHERE TRADERS LLP
+emailAddress		= aakmarketspheretradersllp@gmail.com
+commonName		= "unifi.aakmarketspheretraders.com"
 
 [ v3_req ]
 basicConstraints = CA:FALSE

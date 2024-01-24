@@ -41,15 +41,14 @@ emailAddress		= optional
 [ req ]
 prompt			= no
 distinguished_name	= server
-default_bits		= 2048
+default_bits		= 8192
 input_password		= whatever
 output_password		= whatever
 
 [server]
-countryName		= FR
-stateOrProvinceName	= Radius
-localityName		= Somewhere
-organizationName	= Example Inc.
-emailAddress		= admin@example.org
-commonName		= "Example Inner Server Certificate"
-
+countryName		= IN
+stateOrProvinceName	= Maharashtra
+localityName		= Mumbai
+organizationName	= AAK MARKETSPHERE TRADERS LLP
+emailAddress		= aakmarketspheretradersllp@gmail.com
+commonName		= "AAK Radius Server (WARNING - something is wrong!)"
