@@ -292,7 +292,7 @@ listen {
 		# Set this option to specify the allowed
 		# TLS cipher suites.  The format is listed
 		# in "man 1 ciphers".
-		cipher_list = "DEFAULT"
+		cipher_list = "ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES256-GCM-SHA384"
 
 		# If enabled, OpenSSL will use server cipher list
 		# (possibly defined by cipher_list option above)
@@ -306,7 +306,7 @@ listen {
 		#  Older TLS versions are deprecated.  But for RadSec,
 		#  we CAN allow TLS 1.3.
 		#
-		tls_min_version = "1.3"
+		tls_min_version = "1.2"
 		tls_max_version = "1.3"
 
 		#
