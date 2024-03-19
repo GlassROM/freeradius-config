@@ -338,7 +338,6 @@ authorize {
 	#  the MS-CHAP-Challenge attribute, and add 'Auth-Type := MS-CHAP'
 	#  to the request, which will cause the server to then use
 	#  the mschap module for authentication.
-	mschap
 
 	#
 	#  If you have a Cisco SIP server authenticating against
@@ -660,7 +659,6 @@ accounting {
 	#  Update the wtmp file
 	#
 	#  If you don't use "radlast", you can delete this line.
-	unix
 
 	#
 	#  For Simultaneous-Use tracking.
