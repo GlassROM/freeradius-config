@@ -1,0 +1,39 @@
+# Last Modified: Fri Jan 26 10:23:28 2024
+abi <abi/3.0>,
+
+include <tunables/global>
+
+/usr/bin/radiusd {
+  include <abstractions/base>
+  include <abstractions/nameservice>
+  include <abstractions/openssl>
+
+  capability dac_override,
+
+  /dev/random r,
+  /dev/urandom r,
+  /etc/raddb/certs/ca.pem r,
+  /etc/raddb/certs/server.crt r,
+  /etc/raddb/certs/server.pem r,
+  /etc/raddb/clients.conf r,
+  /etc/raddb/dictionary r,
+  /etc/raddb/mods-available/* r,
+  /etc/raddb/mods-config/** r,
+  /etc/raddb/mods-enabled/ r,
+  /etc/raddb/policy.d/ r,
+  /etc/raddb/policy.d/* r,
+  /etc/raddb/proxy.conf r,
+  /etc/raddb/radiusd.conf r,
+  /etc/raddb/sites-available/* r,
+  /etc/raddb/sites-enabled/ r,
+  /usr/bin/radiusd mr,
+  /var/log/radius/* w,
+  owner /etc/nsswitch.conf r,
+  owner /etc/passwd r,
+  owner /etc/services r,
+  owner /run/radiusd/* w,
+  owner /usr/share/freeradius/* r,
+  owner /var/log/radius/** rw,
+  deny /etc/raddb/certs/ca.key rwklx,
+  deny /etc/raddb/certs/01.pem rwklx,
+}

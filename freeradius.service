@@ -1,7 +1,7 @@
 # /usr/lib/systemd/system/freeradius.service
 [Unit]
 Description=FreeRADIUS high performance RADIUS server.
-After=syslog.target network.target
+After=network.target
 Documentation=man:radiusd(8) man:radiusd.conf(5) https://wiki.freeradius.org/Home https://networkradius.com/freeradius-documentation/
 
 [Service]
@@ -33,8 +33,10 @@ ProtectClock=true
 ProtectControlGroups=true
 ProtectHome=true
 PrivateDevices=true
+DeviceAllow=/dev/urandom r
+DeviceAllow=/dev/random r
 ProtectHostname=true
-ProtectSystem=full
+ProtectSystem=strict
 ProtectKernelLogs=true
 ProtectKernelModules=true
 ProtectKernelTunables=true
@@ -42,19 +44,22 @@ ProtectProc=invisible
 RemoveIPC=true
 Restart=always
 RestartSec=1
-RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictAddressFamilies=AF_INET AF_INET6
 RestrictNamespaces=true
 RestrictRealtime=true
 RestrictSUIDSGID=true
 RuntimeDirectoryMode=700
 SystemCallArchitectures=native
+SystemCallFilter=~@clock @cpu-emulation @debug @keyring @module @mount @obsolete @privileged @raw-io @reboot @swap
 SystemCallFilter=@system-service @setuid
 SystemCallFilter=~@debug @module @mount @obsolete @reboot @swap @resources
 SystemCallErrorNumber=EPERM
 
-# Key security
-InaccessiblePaths=/etc/raddb/certs/ca.key /etc/raddb/certs/01.pem
 ReadOnlyPaths=/etc/raddb/certs/server.crt /etc/raddb/certs/server.csr /etc/raddb/certs/server.key /etc/raddb/certs/server.p12 /etc/raddb/certs/server.pem
 ReadOnlyPaths=/etc/raddb/certs/ca.pem /etc/raddb/certs/ca.crl /etc/raddb/certs/cacrl.pem
+ReadWritePaths=/var/log/radius/radius.log
+
+# Key security
+InaccessiblePaths=/etc/raddb/certs/ca.key /etc/raddb/certs/01.pem /etc/raddb/.git /etc/raddb/certs/.git /etc/raddb/.gitignore
 
 AppArmorProfile=/etc/apparmor.d/usr.bin.radiusd
