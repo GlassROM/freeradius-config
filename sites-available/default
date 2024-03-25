@@ -699,7 +699,6 @@ accounting {
 #	pgsql-voip
 
 	# For Exec-Program and Exec-Program-Wait
-	exec
 
 	#  Filter attributes from the accounting response.
 	attr_filter.accounting_response
@@ -844,7 +843,6 @@ post-auth {
 #	ldap
 
 	# For Exec-Program and Exec-Program-Wait
-	exec
 
 	#
 	#  In order to calcualate the various keys for old style WiMAX
