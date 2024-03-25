@@ -29,7 +29,6 @@ include <tunables/global>
   /usr/bin/radiusd mr,
   /var/log/radius/* w,
   owner /etc/nsswitch.conf r,
-  owner /etc/passwd r,
   owner /etc/services r,
   owner /run/radiusd/* w,
   owner /usr/share/freeradius/* r,
