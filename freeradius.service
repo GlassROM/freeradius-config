@@ -21,12 +21,17 @@ WantedBy=multi-user.target
 
 # /etc/systemd/system/freeradius.service.d/override.conf
 [Service]
+ExecStartPre=+/bin/chown -R radiusd:radiusd /var/log/radius
+ExecStopPost=+/bin/chown -R radiusd:radiusd /var/log/radius
+User=radiusd
+Group=radiusd
 UMask=077
-CapabilityBoundingSet=CAP_DAC_OVERRIDE
+CapabilityBoundingSet=
 LockPersonality=true
 NoNewPrivileges=true
 MemoryDenyWriteExecute=true
 PrivateIPC=true
+PrivateUsers=true
 PrivateTmp=true
 ProcSubset=pid
 ProtectClock=true
@@ -50,8 +55,8 @@ RestrictRealtime=true
 RestrictSUIDSGID=true
 RuntimeDirectoryMode=700
 SystemCallArchitectures=native
-SystemCallFilter=~@clock @cpu-emulation @debug @keyring @module @mount @obsolete @privileged @raw-io @reboot @swap
-SystemCallFilter=@system-service @setuid
+SystemCallFilter=~@clock @cpu-emulation @debug @keyring @module @mount @obsolete @privileged @raw-io @reboot @swap @setuid
+SystemCallFilter=@system-service
 SystemCallFilter=~@debug @module @mount @obsolete @reboot @swap @resources
 SystemCallErrorNumber=EPERM
 

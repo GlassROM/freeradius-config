@@ -1,4 +1,4 @@
-# Last Modified: Mon Mar 25 02:24:49 2024
+# Last Modified: Wed Mar 27 04:55:22 2024
 abi <abi/3.0>,
 
 include <tunables/global>
@@ -7,8 +7,6 @@ include <tunables/global>
   include <abstractions/base>
   include <abstractions/nameservice>
   include <abstractions/openssl>
-
-  capability dac_override,
 
   deny /etc/raddb/certs/01.pem rwlkx,
   deny /etc/raddb/certs/ca.key rwlkx,
@@ -20,6 +18,7 @@ include <tunables/global>
   /etc/raddb/certs/server.pem r,
   /etc/raddb/clients.conf r,
   /etc/raddb/dictionary r,
+  /etc/raddb/mods-available/ r,
   /etc/raddb/mods-available/** r,
   /etc/raddb/mods-config/** r,
   /etc/raddb/mods-enabled/ r,
@@ -33,11 +32,8 @@ include <tunables/global>
   /etc/raddb/sites-enabled/ r,
   /etc/raddb/sites-enabled/** r,
   /usr/bin/radiusd mr,
+  /usr/share/freeradius/* r,
   /var/log/radius/* w,
-  owner /etc/nsswitch.conf r,
-  owner /etc/services r,
-  owner /run/radiusd/* w,
-  owner /usr/share/freeradius/* r,
-  owner /var/log/radius/** rw,
+  owner /run/radiusd/radiusd.pid w,
 
 }
