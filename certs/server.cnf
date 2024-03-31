@@ -16,7 +16,7 @@ name_opt		= ca_default
 cert_opt		= ca_default
 default_days		= 60
 default_crl_days	= 30
-default_md		= sha256
+default_md		= sha384
 preserve		= no
 policy			= policy_match
 copy_extensions		= copy
@@ -60,13 +60,17 @@ keyUsage = nonRepudiation, digitalSignature, keyEncipherment
 subjectAltName = @alt_names
 subjectKeyIdentifier   = hash
 authorityKeyIdentifier = keyid:always,issuer:always
+tlsfeature = status_request
+1.3.6.1.5.5.7.1.24 = DER:30:03:02:01:05
 
 #  This should be a host name of the RADIUS server.
 #  Note that the host name is exchanged in EAP *before*
 #  the user machine has network access.  So the host name
 #  here doesn't really have to match anything in DNS.
 [alt_names]
-DNS.1 = radius.example.com
+DNS.1 = unifi.aakmarketspheretraders.com
 
 # NAIRealm from RFC 7585
-otherName.0 = 1.3.6.1.5.5.7.8.8;FORMAT:UTF8,UTF8:*.example.com
+otherName.0 = 1.3.6.1.5.5.7.8.8;FORMAT:UTF8,UTF8:*.aakmarketspheretraders.com
+otherName.1 = 1.3.6.1.5.5.7.8.8;FORMAT:UTF8,UTF8:*.glassrom.org
+otherName.2 = 1.3.6.1.5.5.7.8.8;FORMAT:UTF8,UTF8:*.glassrom.pw
