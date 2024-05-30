@@ -27,8 +27,10 @@ filter_username {
 		#
 		#  reject all whitespace
 		#  e.g. "user@ site.com", or "us er", or " user", or "user "
+		#  a special case is made for IoT devices. You will likely have to do the same if you have IoT devices as these don't let you set a username
+		#  do note that debugging IoT connections is a pain as most IoT devices will SHUT DOWN the supplicant after a few failures and stop sending requests to your server until a restart
 		#
-		if (&User-Name =~ / /) {
+		if (&User-Name =~ / / && (!(&User-Name =~/^gl devices 2024 q2 key$/)) ) {
 			update request {
 				&Module-Failure-Message += 'Rejected: User-Name contains whitespace'
 			}

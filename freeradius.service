@@ -62,7 +62,7 @@ SystemCallErrorNumber=EPERM
 
 ReadOnlyPaths=/etc/raddb/certs/server.crt /etc/raddb/certs/server.csr /etc/raddb/certs/server.key /etc/raddb/certs/server.p12 /etc/raddb/certs/server.pem
 ReadOnlyPaths=/etc/raddb/certs/ca.pem /etc/raddb/certs/ca.crl /etc/raddb/certs/cacrl.pem
-ReadWritePaths=/var/log/radius/radius.log
+ReadWritePaths=/var/log/radius/
 
 # Key security
 InaccessiblePaths=/etc/raddb/certs/ca.key /etc/raddb/certs/01.pem /etc/raddb/.git /etc/raddb/certs/.git /etc/raddb/.gitignore
