@@ -5,7 +5,7 @@
 #
 #	See the README file in this directory for more information.
 #
-#	$Id: c9fbc9e8646bb157092e48c95352cb2866bafeaf $
+#	$Id: 34948bd9248a6953de3696abcd2088a7a5cee014 $
 #
 ######################################################################
 
@@ -28,7 +28,7 @@ include passwords.mk
 #
 ######################################################################
 .PHONY: all
-all: index.txt serial dh ca server client
+all: index.txt serial ca server client
 
 .PHONY: client
 client: client.pem
