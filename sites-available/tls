@@ -678,7 +678,7 @@ home_server tls {
 		#    'c_rehash' is OpenSSL's command.
 		#  3) uncomment the line below.
 		#  5) Restart radiusd
-	#	check_crl = yes
+		check_crl = yes
 		ca_path = ${cadir}
 
 	       #
