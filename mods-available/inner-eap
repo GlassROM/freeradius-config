@@ -77,7 +77,7 @@ eap inner-eap {
 		#  certificates.  If so, edit this file.
 		ca_file = ${cadir}/ca.pem
 
-		cipher_list = "DEFAULT"
+		cipher_list = "ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES256-GCM-SHA384"
 
 		#  You may want to set a very small fragment size.
 		#  The TLS data here needs to go inside of the

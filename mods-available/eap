@@ -360,14 +360,14 @@ eap {
 		#     'c_rehash' is OpenSSL's command.
 		#  3) uncomment the lines below.
 		#  5) Restart radiusd
-	#	check_crl = yes
+		check_crl = yes
 
 		# Check if intermediate CAs have been revoked.
-	#	check_all_crl = yes
+		check_all_crl = yes
 
 		# Accept an expired Certificate Revocation List
 		#
-	#	allow_expired_crl = no
+		allow_expired_crl = no
 
 		#  If check_cert_issuer is set, the value will
 		#  be checked against the DN of the issuer in
@@ -519,7 +519,7 @@ eap {
 		#  Also note that we only support TLS 1.3 for EAP-TLS,
 		#  TTLS, and PEAP.  It is not supported for EAP-FAST.
 		#
-		tls_min_version = "1.2"
+		tls_min_version = "1.3"
 		tls_max_version = "1.3"
 
 		#  Elliptical cryptography configuration
